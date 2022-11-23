@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/olamundo")
@@ -23,8 +24,21 @@ public class OlaMundoController {
     }
 
     @GetMapping
-    public List<Message> olaMundo(){
+    public List<Message> findAll(@RequestParam(required = false) String message){
+        if (message != null) {
+            return messages.stream()
+                    .filter(msg -> msg.getMessage().contains(message))
+                    .collect(Collectors.toList());
+        }
         return messages;
+    }
+
+    @GetMapping("/{id}")
+    public Message findById(@PathVariable("id") Integer id) {
+        return messages.stream()
+                .filter(msg -> msg.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
     @PostMapping
