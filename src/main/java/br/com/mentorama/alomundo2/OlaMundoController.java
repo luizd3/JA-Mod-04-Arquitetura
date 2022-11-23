@@ -1,5 +1,7 @@
 package br.com.mentorama.alomundo2;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -42,24 +44,26 @@ public class OlaMundoController {
     }
 
     @PostMapping
-    public Integer add(@RequestBody final Message message) {
+    public ResponseEntity<Integer> add(@RequestBody final Message message) {
         if (message.getId() == null) {
             message.setId(messages.size() + 1);
         }
         messages.add(message);
-        return message.getId();
+        return new ResponseEntity<>(message.getId(), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public void update(@RequestBody Message message) {
+    public ResponseEntity update(@RequestBody Message message) {
          messages.stream()
                  .filter(msg -> msg.getId().equals(message.getId()))
                  .forEach(msg -> msg.setMessage(message.getMessage()));
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Integer id) {
+    public ResponseEntity delete(@PathVariable("id") Integer id) {
         messages.removeIf(msg -> msg.getId().equals(id));
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
 }
