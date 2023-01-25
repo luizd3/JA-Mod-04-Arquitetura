@@ -1,6 +1,6 @@
 package br.com.mentorama.alomundo.controllers;
 
-import br.com.mentorama.alomundo.Message;
+import br.com.mentorama.alomundo.entities.Message;
 import br.com.mentorama.alomundo.services.AloMundoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/olamundo")
