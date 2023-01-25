@@ -1,6 +1,8 @@
 package br.com.mentorama.alomundo.controllers;
 
 import br.com.mentorama.alomundo.Message;
+import br.com.mentorama.alomundo.services.AloMundoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,25 +17,16 @@ public class OlaMundoController {
 
     private final List<Message> messages;
 
+    @Autowired
+    private AloMundoService aloMundoService;
+
     public OlaMundoController() {
         this.messages = new ArrayList<>();
-//        Message message1 = new Message(1, "Olá Mundo");
-//        Message message2 = new Message(2, "Hello World");
-//        Message message3 = new Message(3, "Terceira Mensagem");
-//        this.messages.add(message1);
-//        this.messages.add(message2);
-//        this.messages.add(message3);
-
     }
 
     @GetMapping
     public List<Message> findAll(@RequestParam(required = false) String message){
-        if (message != null) {
-            return messages.stream()
-                    .filter(msg -> msg.getMessage().contains(message))
-                    .collect(Collectors.toList());
-        }
-        return messages;
+        return aloMundoService.findAll(message);
     }
 
     @GetMapping("/{id}")
