@@ -1,4 +1,4 @@
-package br.com.mentorama.alomundo2;
+package br.com.mentorama.alomundo;
 
 public class Message {
 

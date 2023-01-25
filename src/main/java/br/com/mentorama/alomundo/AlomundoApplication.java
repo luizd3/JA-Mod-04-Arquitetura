@@ -1,13 +1,13 @@
-package br.com.mentorama.alomundo2;
+package br.com.mentorama.alomundo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Alomundo2Application {
+public class AlomundoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Alomundo2Application.class, args);
+		SpringApplication.run(AlomundoApplication.class, args);
 	}
 
 }
