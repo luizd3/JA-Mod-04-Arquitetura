@@ -31,32 +31,24 @@ public class OlaMundoController {
 
     @GetMapping("/{id}")
     public Message findById(@PathVariable("id") Integer id) {
-        return messages.stream()
-                .filter(msg -> msg.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+        return aloMundoService.findById(id);
     }
 
     @PostMapping
     public ResponseEntity<Integer> add(@RequestBody final Message message) {
-        if (message.getId() == null) {
-            message.setId(messages.size() + 1);
-        }
-        messages.add(message);
-        return new ResponseEntity<>(message.getId(), HttpStatus.CREATED);
+        Integer id = aloMundoService.add(message);
+        return new ResponseEntity<>(id, HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity update(@RequestBody Message message) {
-         messages.stream()
-                 .filter(msg -> msg.getId().equals(message.getId()))
-                 .forEach(msg -> msg.setMessage(message.getMessage()));
+    public ResponseEntity update(@RequestBody final Message message) {
+        aloMundoService.update(message);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable("id") Integer id) {
-        messages.removeIf(msg -> msg.getId().equals(id));
+        aloMundoService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
