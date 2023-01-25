@@ -1,4 +1,4 @@
-package br.com.mentorama.alomundo;
+package br.com.mentorama.alomundo.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
