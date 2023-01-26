@@ -1,6 +1,7 @@
 package br.com.mentorama.alomundo.services;
 
 import br.com.mentorama.alomundo.entities.Message;
+import br.com.mentorama.alomundo.processors.Processor;
 import br.com.mentorama.alomundo.repositories.AloMundoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class AloMundoService {
 
     @Autowired
     private AloMundoRepository aloMundoRepository;
+
+    @Autowired
+    private List<Processor> processors;
 
     public List<Message> findAll(String message){
         if (message != null) {
@@ -28,6 +32,7 @@ public class AloMundoService {
         if (message.getId() == null) {
             message.setId(aloMundoRepository.count() + 1);
         }
+        processors.stream().forEach(processor -> processor.process(message));
         aloMundoRepository.add(message);
         return message.getId();
     }
