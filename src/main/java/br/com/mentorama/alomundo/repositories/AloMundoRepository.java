@@ -4,6 +4,7 @@ package br.com.mentorama.alomundo.repositories;
 import br.com.mentorama.alomundo.entities.Message;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,8 +13,8 @@ public class AloMundoRepository {
 
     private final List<Message> messages;
 
-    public AloMundoRepository(List<Message> messages) {
-        this.messages = messages;
+    public AloMundoRepository() {
+        this.messages = new ArrayList<>();
     }
 
     public List<Message> findAll() {
