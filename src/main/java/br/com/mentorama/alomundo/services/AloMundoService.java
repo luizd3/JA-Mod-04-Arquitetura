@@ -11,8 +11,7 @@ import java.util.List;
 @Service
 public class AloMundoService {
 
-    @Autowired
-    private AloMundoRepository aloMundoRepository;
+    private AloMundoRepository aloMundoRepository = AloMundoRepository.getInstance();
 
     @Autowired
     private List<Processor> processors;

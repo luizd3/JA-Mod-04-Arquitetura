@@ -7,10 +7,10 @@ public class Message {
     private String autor;
     private String descricao;
 
-    public Message(final Integer id, final String message) {
-        this.id = id;
-        this.message = message;
-    }
+//    public Message(final Integer id, final String message) {
+//        this.id = id;
+//        this.message = message;
+//    }
 
     public Message(final Integer id, final String message, final String autor, final String descricao) {
         this.id = id;
@@ -33,6 +33,14 @@ public class Message {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 
     @Override

@@ -1,21 +1,27 @@
 package br.com.mentorama.alomundo.repositories;
 
-
 import br.com.mentorama.alomundo.entities.Message;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Repository
 public class AloMundoRepository {
 
-    private final List<Message> messages;
+    private static AloMundoRepository aloMundoRepository; //Guardar instância da própria classe (Singleton)
 
-    public AloMundoRepository() {
+    private AloMundoRepository() {
         this.messages = new ArrayList<>();
     }
+
+    public static AloMundoRepository getInstance() { //Prover instância da própria classe (Singleton)
+        if (aloMundoRepository == null) {
+            aloMundoRepository = new AloMundoRepository();
+        }
+        return aloMundoRepository;
+    }
+
+    private final List<Message> messages;
 
     public List<Message> findAll() {
         return messages;
