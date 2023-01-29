@@ -7,17 +7,19 @@ public class Message {
     private String autor;
     private String descricao;
 
-//    public Message(final Integer id, final String message) {
-//        this.id = id;
-//        this.message = message;
-//    }
-
-    public Message(final Integer id, final String message, final String autor, final String descricao) {
+    public Message(final Integer id, final String message) {
         this.id = id;
         this.message = message;
-        this.autor = autor;
-        this.descricao = descricao;
+        this.autor = "autor desconhecido";
+        this.descricao = "sem descrição";
     }
+
+//    public Message(final Integer id, final String message, final String autor, final String descricao) {
+//        this.id = id;
+//        this.message = message;
+//        this.autor = autor;
+//        this.descricao = descricao;
+//    }
 
     public Integer getId() {
         return id;
