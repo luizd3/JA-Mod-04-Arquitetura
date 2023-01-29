@@ -14,12 +14,12 @@ public class Message {
         this.descricao = "sem descrição";
     }
 
-//    public Message(final Integer id, final String message, final String autor, final String descricao) {
-//        this.id = id;
-//        this.message = message;
-//        this.autor = autor;
-//        this.descricao = descricao;
-//    }
+    public Message(final Integer id, final String message, final String autor, final String descricao) {
+        this.id = id;
+        this.message = message;
+        this.autor = autor;
+        this.descricao = descricao;
+    }
 
     public Integer getId() {
         return id;
