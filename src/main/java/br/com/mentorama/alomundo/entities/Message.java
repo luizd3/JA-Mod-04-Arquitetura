@@ -7,9 +7,9 @@ public class Message {
     private String autor;
     private String descricao;
 
-    public Message(final Integer id, final String message) {
+    public Message() {
         this.id = id;
-        this.message = message;
+        this.message = "Mensagem VAZIA!";
         this.autor = "autor desconhecido";
         this.descricao = "sem descrição";
     }
